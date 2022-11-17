@@ -1,0 +1,71 @@
+<div class="card-body">
+    <div class="box container mt-5">
+      <h1 class="text-center mt-3 text-primary">Sign up</h1>
+      <form (submit)="SignupForm()" FormGroup="loginForms">
+        <div class="row">
+
+            <div class="col-sm-12 mt-3">
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="fullName"
+                      placeholder="Enter Full Name"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+
+          <div class="col-sm-12 mt-3">
+            <div class="form-group">
+              <label>User Name</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="username"
+                  placeholder="Enter Username"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 mt-3">
+            <div class="form-group">
+              <label>Password</label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="Password"
+                  placeholder="Enter Password"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 mt-5">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    type="submit"
+                    class="form-control btn btn-primary"
+                    formControlName="submit"
+                  />
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-12 mt-3">
+          <div class="form-group link">
+              <a routerLink="/login">Already have account? Click here</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
