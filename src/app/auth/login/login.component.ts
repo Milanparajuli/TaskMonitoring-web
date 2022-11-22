@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForms: FormGroup | undefined;
+  loginForms: FormGroup=new FormGroup({})
   name = new FormControl('');
 
   constructor() { 

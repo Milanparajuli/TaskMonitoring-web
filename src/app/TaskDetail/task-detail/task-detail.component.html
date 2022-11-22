@@ -1,0 +1,23 @@
+
+<!-- <table class="table table-striped">
+  
+</table> -->
+
+
+<a routerLink="/addtask" class="btn btn-outline-secondary btn-sm nav-link ml-5">Add Task</a>
+<table class="table table-striped container mt-3">
+  <thead>
+    <tr>
+      <th scope="col">SN</th>
+      <th scope="col">Task</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ task.name }}</td>
+      <td>{{ task.status }}</td>
+    </tr>
+  </tbody>
+</table>

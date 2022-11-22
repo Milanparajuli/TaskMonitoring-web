@@ -1,23 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
+import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes: Routes = [
   {
-    path:'login',
-    component:LoginComponent
-    // loadChildren:()=> import('')
+    path: '',
+    component: WelcomePageComponent,
+  },
+
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path:'register',
-    component:SignupComponent
-  }
-
+    path: 'task',
+    loadChildren: () =>
+      import('./TaskDetail/task/task.module').then((m) => m.TaskModule),
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

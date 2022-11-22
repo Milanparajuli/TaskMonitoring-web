@@ -1,7 +1,7 @@
 <div class="card-body">
   <div class="box container mt-5">
     <h1 class="text-center mt-3 text-primary">Sign in</h1>
-    <form (submit)="loginFormByAuth()" FormGroup="loginForms">
+    <form (submit)="loginFormByAuth()" FormGroup="loginForms" formGroupName="loginForm">
       <div class="row">
         <div class="col-sm-12 mt-3">
           <div class="form-group">
@@ -45,9 +45,13 @@
       </div>
       <div class="col-sm-12 mt-3">
         <div class="link">
-          <a routerLink="/register" class="nav-link">Not have account? Register here</a>
+          <a routerLink="/auth/register" class="nav-link">Not have account? Register here</a>
         </div>
       </div>
     </form>
   </div>
 </div>
+<!-- <footer>
+  <app-footer></app-footer>
+</footer> -->
+
