@@ -4,20 +4,24 @@
 </table> -->
 
 
-<a routerLink="/addtask" class="btn btn-outline-secondary btn-sm nav-link ml-5">Add Task</a>
+<a routerLink="/home/addtask" class="btn btn-outline-secondary btn-sm nav-link ml-5 but">Add Task</a>
 <table class="table table-striped container mt-3">
   <thead>
     <tr>
       <th scope="col">SN</th>
       <th scope="col">Task</th>
       <th scope="col">Status</th>
+      <th scope="col">Action</th>
+      <th scope="col">Change Status</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks; let i = index">
+    <tr *ngFor="let task of taskDetail; let i = index">
       <td>{{ i + 1 }}</td>
-      <td>{{ task.name }}</td>
-      <td>{{ task.status }}</td>
+      <td>{{ task.task }}</td>
+      <td>{{ task.taskStatus }}</td>
+      <td><span ><a class="btn btn-outline-secondary m-2" (click)="editBtn(task.id)">Edit</a> <a class="btn btn-outline-secondary">Delete</a> </span></td>
+      <td><a class="btn btn-outline-secondary">Todo</a>  <a class="btn btn-outline-secondary m-2">Doing</a> <a class="btn btn-outline-secondary ">Done</a></td>
     </tr>
   </tbody>
 </table>

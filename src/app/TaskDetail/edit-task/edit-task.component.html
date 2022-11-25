@@ -1,1 +1,79 @@
-<p>edit-task works!</p>
+<div class="formData container mt-5">
+    <form [formGroup]="editTaskForm">
+      <div class="row">
+        <div class="col-sm-12 mt-3">
+          <div class="form-group">
+            <label>Task</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="task"
+                placeholder="Enter Task"
+                required
+              />
+            </div>
+            <span
+                  *ngIf="
+                    submitted ||
+                    forms['task'].dirty ||
+                    (forms['task'].touched && forms['task'].invalid)
+                  "
+                  class="info-msg text-danger"
+                >
+                  <small
+                    *ngIf="forms['task'].errors &&
+                                      forms['task'].errors?.['required']"
+                  >
+                    Task is required !
+                  </small>
+                </span>
+          </div>
+        </div>
+        <!-- before -->
+        <div class="col-sm-12 mt-3">
+          <div class="form-group">
+            <label>User Id</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="userId"
+                placeholder="Enter UserId"
+                required
+              />
+            </div>
+            <span
+                  *ngIf="
+                    submitted ||
+                    forms['userId'].dirty ||
+                    (forms['userId'].touched && forms['userId'].invalid)
+                  "
+                  class="info-msg text-danger"
+                >
+                  <small
+                    *ngIf="forms['userId'].errors &&
+                                      forms['userId'].errors?.['required']"
+                  >
+                    Task is required !
+                  </small>
+                </span>
+          </div>
+        </div>
+        <!-- after -->
+  
+        <div class="col-sm-12 mt-5">
+          <div class="form-group">
+            <div class="input-group">
+              <input
+                type="submit"
+                class="form-control btn btn-primary"
+                (click)="sendTask(editTaskForm.value)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

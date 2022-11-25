@@ -1,7 +1,8 @@
 <div class="card-body">
   <div class="box container mt-5">
     <h1 class="text-center mt-3 text-primary">Sign in</h1>
-    <form (submit)="loginFormByAuth()" FormGroup="loginForms" formGroupName="loginForm">
+    <form [formGroup]="loginForms"
+    >
       <div class="row">
         <div class="col-sm-12 mt-3">
           <div class="form-group">
@@ -13,8 +14,23 @@
                 formControlName="username"
                 placeholder="Enter Username"
                 required
-              />
+              />          
             </div>
+            <span
+                *ngIf="
+                  submitted ||
+                  forms['username'].dirty ||
+                  (forms['username'].touched && forms['username'].invalid)
+                "
+                class="info-msg text-danger"
+              >
+                <small
+                  *ngIf="forms['username'].errors &&
+                                    forms['username'].errors?.['required']"
+                >
+                  User name is required !
+                </small>
+              </span>
           </div>
         </div>
         <div class="col-sm-12 mt-3">
@@ -24,11 +40,26 @@
               <input
                 type="password"
                 class="form-control"
-                formControlName="Password"
+                formControlName="password"
                 placeholder="Enter Password"
                 required
               />
             </div>
+            <span
+                *ngIf="
+                  submitted ||
+                  forms['password'].dirty ||
+                  (forms['password'].touched && forms['password'].invalid)
+                "
+                class="info-msg text-danger"
+              >
+                <small
+                  *ngIf="forms['password'].errors &&
+                                    forms['password'].errors?.['required']"
+                >
+                  Password is required !
+                </small>
+              </span>
           </div>
         </div>
         <div class="col-sm-12 mt-5">
@@ -38,14 +69,17 @@
                 type="submit"
                 class="form-control btn btn-primary"
                 formControlName="submit"
-              />
+                (click)="loginUser(loginForms.value)"
+              /> 
             </div>
           </div>
         </div>
       </div>
       <div class="col-sm-12 mt-3">
         <div class="link">
-          <a routerLink="/auth/register" class="nav-link">Not have account? Register here</a>
+          <a routerLink="/auth/register" class="nav-link"
+            >Not have account? Register here</a
+          >
         </div>
       </div>
     </form>
@@ -54,4 +88,3 @@
 <!-- <footer>
   <app-footer></app-footer>
 </footer> -->
-

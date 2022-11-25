@@ -15,7 +15,7 @@ const routes: Routes = [
       import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'task',
+    path: 'home',
     loadChildren: () =>
       import('./TaskDetail/task/task.module').then((m) => m.TaskModule),
   },

@@ -11,11 +11,11 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { TaskDetailComponent } from './TaskDetail/task-detail/task-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddTaskComponent } from './TaskDetail/add-task/add-task.component';
-import { EditTaskComponent } from './TaskDetail/edit-task/edit-task.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthNavComponent } from './auth/auth-nav/auth-nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,6 @@ import { AuthNavComponent } from './auth/auth-nav/auth-nav.component';
     WelcomePageComponent,
     TaskDetailComponent,
     AddTaskComponent,
-    EditTaskComponent,
     PageNotFoundComponent,
     AuthNavComponent,
   ],
@@ -38,6 +37,7 @@ import { AuthNavComponent } from './auth/auth-nav/auth-nav.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
