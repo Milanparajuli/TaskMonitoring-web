@@ -4,13 +4,13 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: WelcomePageComponent,
-  },
+  // {
+  //   path: '',
+  //   component: WelcomePageComponent,
+  // },
 
   {
-    path: 'auth',
+    path: '',
     loadChildren: () =>
       import('./auth/auth.module').then((m) => m.AuthModule),
   },

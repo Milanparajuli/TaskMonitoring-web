@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { clippingParents } from '@popperjs/core';
+// import { clippingParents } from '@popperjs/core';
 import { TaskServiceService } from 'src/app/service/task.service';
 
 @Component({
@@ -19,6 +19,9 @@ export class EditTaskComponent implements OnInit {
   submitted: boolean | undefined;
   isSubmitting: boolean | undefined;
   id: string | undefined;
+  taskDetail: Array<any> = new Array<any>();
+  taskStatus:any;
+  task: any;
 
   constructor(
     private form: FormBuilder,
@@ -31,24 +34,35 @@ export class EditTaskComponent implements OnInit {
     this.editTaskForm = this.form.group({
       task: [undefined, Validators.required],
       userId: [undefined, Validators.required],
+      taskStatus:[undefined]
     });
     this.getTaskDetailFromId();
+    // this.sendTask(this.task,this.id);
   }
   get forms(): { [key: string]: AbstractControl } {
     return this.editTaskForm.controls;
   }
 
-  sendTask(task: any) {
+  sendTask(task: any,id:any) {
     this.submitted = true;
     console.log(task);
     if (this.editTaskForm.valid) {
-      this.taskService.editTask(task).subscribe(
+      console.log("before");
+      this.taskService.editTask(task,id).subscribe(
+        
         (response: any) => {
-          this.id = response.id;
-          this.isSubmitting = false;
+          // console.log("uvfe")
+          // console.log('response',response)
+          // this.id = response.id;
+          task = response.task;
+          this.taskDetail = response?.task;
+          // this.taskStatus = response?.taskStatus;
+          // console.log('task jnbvjk: ',this.taskDetail)
+          this.isSubmitting = true;
           console.log('Task Edited sucessfully');
         },
         (error: any) => {
+          console.error(error);
           this.isSubmitting = false;
         }
       );
@@ -74,6 +88,7 @@ export class EditTaskComponent implements OnInit {
     this.editTaskForm.patchValue({
       task: task.task,
       userId: task.userId,
+      status:task.taskStatus,
     });
   }
 
@@ -82,4 +97,10 @@ export class EditTaskComponent implements OnInit {
       this.id = params['id'];
     });
   }
+
+  // onEditTask(taskDetail:any){
+  //   this.taskService.editTask(taskDetail,this.id).subscribe((response:any)=>{
+  //     console.log('Edit sucess')
+  //   })
+  // }
 }

@@ -81,6 +81,25 @@ export class TaskDetailComponent implements OnInit {
   }
 
   editBtn(id: number) {
-    this.router.navigate(['home/edit-task/',id])
+    this.router.navigate(['home/edit-task/',id]);
+  }
+
+  deleteBtn(id:any){
+    if(confirm("Are you Sure want to delete ?")){
+      this.taskService.deleteTaskById(id).subscribe((response:any)=>{
+        this.router.navigate(['/home/']);
+        // location.reload();
+        // console.log("hello");
+      },
+      (error:any)=>{
+        console.error(error);
+      })
+    }
+    // this.taskService.deleteTaskById(id).subscribe((response:any)=>{
+    //   // console.log("hello");
+    // },
+    // (error:any)=>{
+    //   console.error(error);
+    // })
   }
 }

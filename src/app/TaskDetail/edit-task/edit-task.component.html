@@ -59,8 +59,41 @@
                   </small>
                 </span>
           </div>
+
+          
         </div>
         <!-- after -->
+
+        <div class="btn-group mt-4">
+          <input
+            mdbRadio
+            type="radio" value="1"
+            class="btn-check"
+            name="options"
+            id="option1"
+            autocomplete="off"
+          />
+          <label class="btn btn-secondary" for="option1">Todo</label>
+          <input
+            mdbRadio
+            type="radio" 
+            class="btn-check" value="2" taskStatus=2
+            name="options"
+            id="option2"
+            autocomplete="off"
+          />
+          <label class="btn btn-secondary" for="option2">Doing</label>
+          <input
+            mdbRadio
+            type="radio" taskStatus="Done"
+            class="btn-check"
+            name="options"
+            id="option3"
+            autocomplete="off"
+          />
+          <label class="btn btn-secondary" for="option3">Done</label>
+        </div>
+        <!--  -->
   
         <div class="col-sm-12 mt-5">
           <div class="form-group">
@@ -68,7 +101,7 @@
               <input
                 type="submit"
                 class="form-control btn btn-primary"
-                (click)="sendTask(editTaskForm.value)"
+                (click)="sendTask(editTaskForm.value,id)"
               />
             </div>
           </div>

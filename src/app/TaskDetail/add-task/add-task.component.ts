@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TaskServiceService} from 'src/app/service/task.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class AddTaskComponent implements OnInit {
 
   constructor(
     private form:FormBuilder,
-    private taskService:TaskServiceService
+    private taskService:TaskServiceService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class AddTaskComponent implements OnInit {
       {
         this.isSubmitting=false;
         console.log("Task Added sucessfully")
+        this.router.navigate(['/home']);
       },
       (error:any)=>{
         this.isSubmitting=false;

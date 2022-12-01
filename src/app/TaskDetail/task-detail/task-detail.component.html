@@ -12,7 +12,7 @@
       <th scope="col">Task</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
-      <th scope="col">Change Status</th>
+      <!-- <th scope="col">Change Status</th> -->
     </tr>
   </thead>
   <tbody>
@@ -20,8 +20,8 @@
       <td>{{ i + 1 }}</td>
       <td>{{ task.task }}</td>
       <td>{{ task.taskStatus }}</td>
-      <td><span ><a class="btn btn-outline-secondary m-2" (click)="editBtn(task.id)">Edit</a> <a class="btn btn-outline-secondary">Delete</a> </span></td>
-      <td><a class="btn btn-outline-secondary">Todo</a>  <a class="btn btn-outline-secondary m-2">Doing</a> <a class="btn btn-outline-secondary ">Done</a></td>
+      <td><span ><a class="btn btn-outline-secondary m-2" (click)="editBtn(task.id)">Edit</a> <a class="btn btn-outline-secondary" (click)="deleteBtn(task.id)">Delete</a> </span></td>
+      <!-- <td><a class="btn btn-outline-secondary">Todo</a>  <a class="btn btn-outline-secondary m-2">Doing</a> <a class="btn btn-outline-secondary ">Done</a></td> -->
     </tr>
   </tbody>
 </table>

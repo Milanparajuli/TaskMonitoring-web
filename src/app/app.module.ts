@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NavComponent } from './common/nav/nav.component';
-import { FooterComponent } from './common/footer/footer.component';
+// import { NavComponent } from './common/nav/nav.component';
+// import { FooterComponent } from './common/footer/footer.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { TaskDetailComponent } from './TaskDetail/task-detail/task-detail.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,13 +22,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     LoginComponent,
     SignupComponent,
-    NavComponent,
-    FooterComponent,
+    // NavComponent,
+    // FooterComponent,
     WelcomePageComponent,
     TaskDetailComponent,
     AddTaskComponent,
     PageNotFoundComponent,
-    AuthNavComponent,
   ],
   imports: [
     BrowserModule,

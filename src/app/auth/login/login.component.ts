@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private form: FormBuilder,
-    private userService:UserService
+    private userService:UserService,
+    private router:Router
     ) {}
 
   ngOnInit(): void {
@@ -43,9 +45,11 @@ export class LoginComponent implements OnInit {
         (response:any)=>{
           this.isSubmitting=false;
           console.log("Login Sucessfully");
+          this.router.navigate(['/home']);
         },
         (error:any)=>{
           this.isSubmitting = false;
+          window.location.reload();
         }
       );
     }
