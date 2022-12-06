@@ -1,27 +1,51 @@
-
 <!-- <table class="table table-striped">
   
 </table> -->
 
-
-<a routerLink="/home/addtask" class="btn btn-outline-secondary btn-sm nav-link ml-5 but">Add Task</a>
-<table class="table table-striped container mt-3">
-  <thead>
-    <tr>
-      <th scope="col">SN</th>
-      <th scope="col">Task</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
-      <!-- <th scope="col">Change Status</th> -->
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of taskDetail; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>{{ task.task }}</td>
-      <td>{{ task.taskStatus }}</td>
-      <td><span ><a class="btn btn-outline-secondary m-2" (click)="editBtn(task.id)">Edit</a> <a class="btn btn-outline-secondary" (click)="deleteBtn(task.id)">Delete</a> </span></td>
-      <!-- <td><a class="btn btn-outline-secondary">Todo</a>  <a class="btn btn-outline-secondary m-2">Doing</a> <a class="btn btn-outline-secondary ">Done</a></td> -->
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Task Detail</h1>
+    </div>
+    <div class="col-sm-6">
+      <!-- <a
+        routerLink="/home/addtask"
+        class="btn btn-md btn-outline-primary nav-link mb-4 but"
+        >Add Task</a
+      > -->
+      <button (click)="addTask()" class="btn btn-sm btn-outline-primary float-end">
+        <i class="fal fa-plus"></i> Add Task
+      </button>
+    </div>
+    <hr />
+  </div>
+  <table class="table table-striped container mt-3">
+    <thead>
+      <tr>
+        <th scope="col">SN</th>
+        <th scope="col">Task</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+        <!-- <th scope="col">Change Status</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of taskDetail; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ task.task }}</td>
+        <td>{{ task.taskStatus }}</td>
+        <td>
+          <span
+            ><a class="btn btn-outline-secondary m-2" (click)="editBtn(task.id)"
+              >Edit</a
+            >
+            <a class="btn btn-outline-secondary" (click)="deleteBtn(task.id)"
+              >Delete</a
+            >
+          </span>
+        </td>
+        <!-- <td><a class="btn btn-outline-secondary">Todo</a>  <a class="btn btn-outline-secondary m-2">Doing</a> <a class="btn btn-outline-secondary ">Done</a></td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

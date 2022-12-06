@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
 
   submitted: boolean = false;
   isSubmitting:boolean|undefined;
+  key:any;
+  userId:any;
+  username:any;
 
   constructor(
     private form: FormBuilder,
@@ -27,6 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // this.loginFormByAuth();
+    this.listUserById(1);
     this.loginForms = this.form.group({
       username: [undefined, Validators.required],
       password: [undefined, Validators.required],
@@ -35,6 +39,18 @@ export class LoginComponent implements OnInit {
 
   get forms(): { [key: string]: AbstractControl } {
     return this.loginForms.controls;
+  }
+
+  listUserById(id:any){
+    this.userService.getUserById(id).subscribe(
+      (response:any)=>{
+        // this.userId = response;
+        console.log("resp: ",response)
+      },
+      (error:any)=>{
+        console.error("Error: ",error);
+      }
+    )
   }
 
   loginUser(login:any){
@@ -46,6 +62,7 @@ export class LoginComponent implements OnInit {
           this.isSubmitting=false;
           console.log("Login Sucessfully");
           this.router.navigate(['/home']);
+          localStorage.setItem('userId', response.userId)
         },
         (error:any)=>{
           this.isSubmitting = false;
@@ -56,6 +73,15 @@ export class LoginComponent implements OnInit {
     else{
       console.log("Error");
     }
+    localStorage.setItem(this.key,login.userId)
+    localStorage.setItem(this.key, login.username)
+    this.userId=localStorage.getItem(this.key)
+    this.username = localStorage.getItem(this.key);
+  }
+  
+
+  forgotPassword(){
+    this.router.navigate(['forgot-password'])
   }
 }
 

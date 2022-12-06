@@ -68,7 +68,6 @@
               <input
                 type="submit"
                 class="form-control btn btn-primary"
-                formControlName="submit"
                 (click)="loginUser(loginForms.value)"
               /> 
             </div>
@@ -78,14 +77,14 @@
         <div class="col-sm-12 mt-5">
           <div class="form-group">
             <div class="input-group">
-             <a href="#">Forgot Password</a>
+             <a (click)="forgotPassword()">Forgot Password</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-12 mt-3">
+      <div class="col-sm-12 ">
         <div class="link">
-          <a routerLink="/auth/register" class="nav-link"
+          <a routerLink="/register" class="nav-link"
             >Not have account? Register here</a
           >
         </div>

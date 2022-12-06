@@ -9,11 +9,11 @@ export class AuthNavComponent implements OnInit {
   menus=[
     {
       name:'sign up',
-      link:'/register'
+      link:'register'
     },
     {
       name:'login',
-      link:'/login'
+      link:'login'
     }
   ]
   constructor() { }

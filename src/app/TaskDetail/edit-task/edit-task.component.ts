@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { clippingParents } from '@popperjs/core';
 import { TaskServiceService } from 'src/app/service/task.service';
 
@@ -26,7 +26,8 @@ export class EditTaskComponent implements OnInit {
   constructor(
     private form: FormBuilder,
     private taskService: TaskServiceService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class EditTaskComponent implements OnInit {
     this.editTaskForm = this.form.group({
       task: [undefined, Validators.required],
       userId: [undefined, Validators.required],
-      taskStatus:[undefined]
+      taskStatus:[undefined],
     });
     this.getTaskDetailFromId();
     // this.sendTask(this.task,this.id);
@@ -60,6 +61,7 @@ export class EditTaskComponent implements OnInit {
           // console.log('task jnbvjk: ',this.taskDetail)
           this.isSubmitting = true;
           console.log('Task Edited sucessfully');
+          this.router.navigate(['home']);
         },
         (error: any) => {
           console.error(error);

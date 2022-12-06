@@ -1,6 +1,6 @@
 <!-- <div class="content"> -->
 <div class="card-body">
-  <div class="box container mt-5">
+  <div class="box container">
     <h1 class="text-center mt-3 text-primary">Sign up</h1>
     <form [formGroup]="signupForms">
       <div class="row">
@@ -131,8 +131,7 @@
               <input
                 type="submit"
                 class="form-control btn btn-primary"
-                formControlName="submit"
-                (click)="onSendData(signupForms.value)"
+                (click)="onSendData(signupForms.valueChanges)"
               />
             </div>
           </div>
@@ -140,7 +139,7 @@
       </div>
       <div class="col-sm-12 mt-3">
         <div class="form-group link">
-          <a routerLink="/auth/login">Already have account? Click here</a>
+          <p routerLink="/login" class="mb-2 mt-2">Already have account? Click here</p>
         </div>
       </div>
     </form>

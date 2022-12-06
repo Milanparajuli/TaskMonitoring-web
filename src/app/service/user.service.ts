@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
   apiEndPoint: string = 'users';
-  apiLoginEndPoing:string='users/login'
+  apiLoginEndPoing:string='users/login';
+  apiByIdEndPoint:string='users/by-id';
   baseUrl: string = environment.baseUrl;
 
   constructor(private httpClient: HttpClient) {}
@@ -28,6 +29,12 @@ export class UserService {
   login(login:any):Observable<any>{
     return this.httpClient.post<any>(
       this.baseUrl.concat(this.apiLoginEndPoing),login
+    )
+  }
+
+  getUserById(id:any):Observable<any>{
+    return this.httpClient.get<any>(
+      this.baseUrl.concat(this.apiByIdEndPoint).concat('/' + id)
     )
   }
 }

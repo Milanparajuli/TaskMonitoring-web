@@ -1,112 +1,116 @@
 <div class="formData container mt-5">
-    <form [formGroup]="editTaskForm">
-      <div class="row">
-        <div class="col-sm-12 mt-3">
-          <div class="form-group">
-            <label>Task</label>
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                formControlName="task"
-                placeholder="Enter Task"
-                required
-              />
-            </div>
-            <span
-                  *ngIf="
-                    submitted ||
-                    forms['task'].dirty ||
-                    (forms['task'].touched && forms['task'].invalid)
-                  "
-                  class="info-msg text-danger"
-                >
-                  <small
-                    *ngIf="forms['task'].errors &&
+  <form [formGroup]="editTaskForm">
+    <div class="row">
+      <div class="col-sm-12 mt-3">
+        <div class="form-group">
+          <label>Task</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="task"
+              placeholder="Enter Task"
+              required
+            />
+          </div>
+          <span
+            *ngIf="
+              submitted ||
+              forms['task'].dirty ||
+              (forms['task'].touched && forms['task'].invalid)
+            "
+            class="info-msg text-danger"
+          >
+            <small
+              *ngIf="forms['task'].errors &&
                                       forms['task'].errors?.['required']"
-                  >
-                    Task is required !
-                  </small>
-                </span>
-          </div>
+            >
+              Task is required !
+            </small>
+          </span>
         </div>
-        <!-- before -->
-        <div class="col-sm-12 mt-3">
-          <div class="form-group">
-            <label>User Id</label>
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                formControlName="userId"
-                placeholder="Enter UserId"
-                required
-              />
-            </div>
-            <span
-                  *ngIf="
-                    submitted ||
-                    forms['userId'].dirty ||
-                    (forms['userId'].touched && forms['userId'].invalid)
-                  "
-                  class="info-msg text-danger"
-                >
-                  <small
-                    *ngIf="forms['userId'].errors &&
+      </div>
+      <!-- before -->
+      <div class="col-sm-12 mt-3">
+        <div class="form-group">
+          <label>User Id</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="userId"
+              placeholder="Enter UserId"
+              required
+            />
+          </div>
+          <span
+            *ngIf="
+              submitted ||
+              forms['userId'].dirty ||
+              (forms['userId'].touched && forms['userId'].invalid)
+            "
+            class="info-msg text-danger"
+          >
+            <small
+              *ngIf="forms['userId'].errors &&
                                       forms['userId'].errors?.['required']"
-                  >
-                    Task is required !
-                  </small>
-                </span>
-          </div>
-
-          
+            >
+              Task is required !
+            </small>
+          </span>
         </div>
-        <!-- after -->
+      </div>
+      <!-- after -->
 
-        <div class="btn-group mt-4">
-          <input
-            mdbRadio
-            type="radio" value="1"
-            class="btn-check"
-            name="options"
-            id="option1"
-            autocomplete="off"
-          />
-          <label class="btn btn-secondary" for="option1">Todo</label>
-          <input
-            mdbRadio
-            type="radio" 
-            class="btn-check" value="2" taskStatus=2
-            name="options"
-            id="option2"
-            autocomplete="off"
-          />
-          <label class="btn btn-secondary" for="option2">Doing</label>
-          <input
-            mdbRadio
-            type="radio" taskStatus="Done"
-            class="btn-check"
-            name="options"
-            id="option3"
-            autocomplete="off"
-          />
-          <label class="btn btn-secondary" for="option3">Done</label>
-        </div>
-        <!--  -->
-  
-        <div class="col-sm-12 mt-5">
-          <div class="form-group">
-            <div class="input-group">
-              <input
-                type="submit"
-                class="form-control btn btn-primary"
-                (click)="sendTask(editTaskForm.value,id)"
-              />
-            </div>
+      <div class="btn-group mt-4">
+        <input
+          mdbRadio
+          type="radio"
+          value="0"
+          class="btn-check"
+          name="taskStatus"
+          id="todo"
+          autocomplete="off"
+          formControlName="taskStatus"
+        />
+        <label class="btn btn-secondary" for="todo">Todo</label>
+        <input
+          mdbRadio
+          type="radio"
+          class="btn-check"
+          value="1"
+          name="taskStatus"
+          id="doing"
+          autocomplete="off"
+          formControlName="taskStatus"
+        />
+        <label class="btn btn-secondary" for="doing">Doing</label>
+        <input
+          mdbRadio
+          type="radio"
+          taskStatus="Done"
+          class="btn-check"
+          name="taskStatus"
+          id="done"
+          autocomplete="off"
+          formControlName="taskStatus"
+          value="2"
+        />
+        <label class="btn btn-secondary" for="done">Done</label>
+      </div>
+      <!--  -->
+
+      <div class="col-sm-12 mt-5">
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              type="submit"
+              class="form-control btn btn-primary"
+              (click)="sendTask(editTaskForm.value, id)"
+            />
           </div>
         </div>
       </div>
-    </form>
-  </div>
-  
+    </div>
+  </form>
+</div>

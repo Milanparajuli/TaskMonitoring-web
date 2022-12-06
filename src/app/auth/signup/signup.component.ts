@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class SignupComponent implements OnInit {
   submitted: boolean | undefined;
   isSubmitting: boolean | undefined;
 
-  constructor(private form: FormBuilder, private userService: UserService) {}
+  constructor(private form: FormBuilder, private userService: UserService,private router:Router) {}
 
   ngOnInit(): void {
     this.signupForms = this.form.group({
@@ -38,6 +39,7 @@ export class SignupComponent implements OnInit {
       this.userService.addUser(signup).subscribe(
         (response: any) => {
           this.isSubmitting = false;
+          this.router.navigate(['//login'])
           console.log('user addded successfully');
         },
         (error: any) => {

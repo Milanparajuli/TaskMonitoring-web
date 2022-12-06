@@ -14,52 +14,6 @@ export class TaskDetailComponent implements OnInit {
   // email: any;
   // fullName: any;
   task: any;
-  tasks = [
-    {
-      name: 'hello hi',
-      status: 'Todo',
-    },
-    {
-      name: 'hello hidncvjke',
-      status: 'Doing',
-    },
-    {
-      name: 'hello hidnvjn',
-      status: 'Done',
-    },
-    {
-      name: 'hello hiqncj ',
-      status: 'Todo',
-    },
-    {
-      name: 'hello hiccjw dklkvm',
-      status: 'Todo',
-    },
-    {
-      name: 'hello hiccjw dklkvm',
-      status: 'Todo',
-    },
-    {
-      name: 'hello hiccjw dklkvm',
-      status: 'Todo',
-    },
-    {
-      name: 'hello hiccjw dklkvm',
-      status: 'Todo',
-    },
-    {
-      name: 'hello hiccjw dklkvm',
-      status: 'Todo',
-    },
-    {
-      name: 'hello hiccjw dklkvm',
-      status: 'Todo',
-    },
-    {
-      name: 'hello hiccjw dklkvm',
-      status: 'Todo',
-    },
-  ];
 
   constructor(
     private taskService: TaskServiceService,
@@ -87,9 +41,7 @@ export class TaskDetailComponent implements OnInit {
   deleteBtn(id:any){
     if(confirm("Are you Sure want to delete ?")){
       this.taskService.deleteTaskById(id).subscribe((response:any)=>{
-        this.router.navigate(['/home/']);
-        // location.reload();
-        // console.log("hello");
+        this.listUser();
       },
       (error:any)=>{
         console.error(error);
@@ -101,5 +53,8 @@ export class TaskDetailComponent implements OnInit {
     // (error:any)=>{
     //   console.error(error);
     // })
+  }
+  addTask(){
+    this.router.navigate(['/home/addtask'])
   }
 }
