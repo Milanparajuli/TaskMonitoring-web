@@ -15,12 +15,14 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LoginComponent implements OnInit {
   loginForms: FormGroup = new FormGroup({});
+  fieldTextType:boolean|undefined;
 
   submitted: boolean = false;
   isSubmitting:boolean|undefined;
   key:any;
   userId:any;
   username:any;
+  inValidMsg:string='';
 
   constructor(
     private form: FormBuilder,
@@ -66,7 +68,8 @@ export class LoginComponent implements OnInit {
         },
         (error:any)=>{
           this.isSubmitting = false;
-          window.location.reload();
+          this.inValidMsg = "Either Password or username is not valid";
+          // window.location.reload();
         }
       );
     }
@@ -82,6 +85,13 @@ export class LoginComponent implements OnInit {
 
   forgotPassword(){
     this.router.navigate(['forgot-password'])
+  }
+  signUp(){
+    this.router.navigate(['register'])
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }
 

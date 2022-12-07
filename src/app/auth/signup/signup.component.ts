@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   signupForms: FormGroup = new FormGroup({});
   submitted: boolean | undefined;
   isSubmitting: boolean | undefined;
+  fieldTextType: boolean | undefined;
 
   constructor(private form: FormBuilder, private userService: UserService,private router:Router) {}
 
@@ -49,5 +50,12 @@ export class SignupComponent implements OnInit {
     } else {
       console.log('Error on adding the data');
     }
+  }
+  signIn(){
+    this.router.navigate(['login'])
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }
