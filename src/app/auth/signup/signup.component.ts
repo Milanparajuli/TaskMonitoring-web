@@ -19,7 +19,11 @@ export class SignupComponent implements OnInit {
   isSubmitting: boolean | undefined;
   fieldTextType: boolean | undefined;
 
-  constructor(private form: FormBuilder, private userService: UserService,private router:Router) {}
+  constructor(
+    private form: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.signupForms = this.form.group({
@@ -40,7 +44,7 @@ export class SignupComponent implements OnInit {
       this.userService.addUser(signup).subscribe(
         (response: any) => {
           this.isSubmitting = false;
-          this.router.navigate(['/auth/login'])
+          this.router.navigate(['/auth/login']);
           console.log('user addded successfully');
         },
         (error: any) => {
@@ -51,8 +55,8 @@ export class SignupComponent implements OnInit {
       console.log('Error on adding the data');
     }
   }
-  signIn(){
-    this.router.navigate(['auth/login'])
+  signIn() {
+    this.router.navigate(['auth/login']);
   }
 
   toggleFieldTextType() {

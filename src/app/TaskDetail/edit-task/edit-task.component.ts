@@ -20,7 +20,7 @@ export class EditTaskComponent implements OnInit {
   isSubmitting: boolean | undefined;
   id: string | undefined;
   taskDetail: Array<any> = new Array<any>();
-  taskStatus:any;
+  taskStatus: any;
   task: any;
 
   constructor(
@@ -35,7 +35,7 @@ export class EditTaskComponent implements OnInit {
     this.editTaskForm = this.form.group({
       task: [undefined, Validators.required],
       userId: [undefined, Validators.required],
-      taskStatus:[undefined],
+      taskStatus: [undefined],
     });
     this.getTaskDetailFromId();
     // this.sendTask(this.task,this.id);
@@ -44,13 +44,12 @@ export class EditTaskComponent implements OnInit {
     return this.editTaskForm.controls;
   }
 
-  sendTask(task: any,id:any) {
+  sendTask(task: any, id: any) {
     this.submitted = true;
     console.log(task);
     if (this.editTaskForm.valid) {
-      console.log("before");
-      this.taskService.editTask(task,id).subscribe(
-        
+      console.log('before');
+      this.taskService.editTask(task, id).subscribe(
         (response: any) => {
           // console.log("uvfe")
           // console.log('response',response)
@@ -90,7 +89,7 @@ export class EditTaskComponent implements OnInit {
     this.editTaskForm.patchValue({
       task: task.task,
       userId: task.userId,
-      status:task.taskStatus,
+      status: task.taskStatus,
     });
   }
 

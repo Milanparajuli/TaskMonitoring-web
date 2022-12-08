@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -14,25 +15,27 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  isAuthenticate: boolean = false;
   loginForms: FormGroup = new FormGroup({});
-  fieldTextType:boolean|undefined;
+  fieldTextType: boolean | undefined;
 
   submitted: boolean = false;
-  isSubmitting:boolean|undefined;
-  key:any;
-  userId:any;
-  username:any;
-  inValidMsg:string='';
+  isSubmitting: boolean | undefined;
+  key: any;
+  userId: any;
+  username: any;
+  inValidMsg: string = '';
+  id: any;
 
   constructor(
     private form: FormBuilder,
-    private userService:UserService,
-    private router:Router
-    ) {}
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    // this.loginFormByAuth();
-    this.listUserById(1);
+    // // this.loginFormByAuth();
+    // this.listUserById(this.id);
     this.loginForms = this.form.group({
       username: [undefined, Validators.required],
       password: [undefined, Validators.required],
@@ -43,55 +46,53 @@ export class LoginComponent implements OnInit {
     return this.loginForms.controls;
   }
 
-  listUserById(id:any){
+  listUserById(id: any) {
     this.userService.getUserById(id).subscribe(
-      (response:any)=>{
+      (response: any) => {
         // this.userId = response;
-        console.log("resp: ",response)
+        console.log('resp: ', response);
+        this.id = localStorage.getItem(response.id);
       },
-      (error:any)=>{
-        console.error("Error: ",error);
+      (error: any) => {
+        console.error('Error: ', error);
       }
-    )
+    );
   }
 
-  loginUser(login:any){
-    this.submitted=true;
+  loginUser(login: any) {
+    this.submitted = true;
     console.log(login);
-    if(this.loginForms.valid){
+    if (this.loginForms.valid) {
       this.userService.login(login).subscribe(
-        (response:any)=>{
-          this.isSubmitting=false;
-          console.log("Login Sucessfully");
-          this.router.navigate(['/home']);
-          localStorage.setItem('userId', response.userId)
-        },
-        (error:any)=>{
+        (response: any) => {
           this.isSubmitting = false;
-          this.inValidMsg = "Either Password or username is not valid";
+          console.log('Login Sucessfully');
+          this.router.navigate(['/home']);
+          localStorage.setItem('userId', response.userId);
+        },
+        (error: any) => {
+          this.isSubmitting = false;
+          this.inValidMsg = 'Either Password or username is not valid';
           // window.location.reload();
         }
       );
+    } else {
+      console.log('Error');
     }
-    else{
-      console.log("Error");
-    }
-    localStorage.setItem(this.key,login.userId)
-    localStorage.setItem(this.key, login.username)
-    this.userId=localStorage.getItem(this.key)
+    localStorage.setItem(this.key, login.userId);
+    localStorage.setItem(this.key, login.username);
+    this.userId = localStorage.getItem(this.key);
     this.username = localStorage.getItem(this.key);
   }
-  
 
-  forgotPassword(){
-    this.router.navigate(['forgot-password'])
+  forgotPassword() {
+    this.router.navigate(['forgot-password']);
   }
-  signUp(){
-    this.router.navigate(['auth/register'])
+  signUp() {
+    this.router.navigate(['auth/register']);
   }
 
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
 }
-

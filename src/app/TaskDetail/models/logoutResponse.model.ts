@@ -1,3 +1,3 @@
-export class logoutResponseModel{
-    username:string=""
+export class logoutResponseModel {
+  username: string = '';
 }

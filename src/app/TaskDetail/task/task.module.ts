@@ -8,18 +8,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from 'src/app/common/nav/nav.component';
 import { FooterComponent } from 'src/app/common/footer/footer.component';
 
-
 @NgModule({
   declarations: [
     TaskComponent,
     EditTaskComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
   ],
-  imports: [
-    CommonModule,
-    TaskRoutingModule,
-    ReactiveFormsModule,
-  ]
+  imports: [CommonModule, TaskRoutingModule, ReactiveFormsModule],
 })
-export class TaskModule { }
+export class TaskModule {}

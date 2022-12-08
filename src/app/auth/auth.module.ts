@@ -7,18 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthNavComponent } from './auth-nav/auth-nav.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
-
 @NgModule({
-    declarations: [
-        AuthComponent,
-        AuthNavComponent,
-        ForgotPasswordComponent
-    ],
-    imports: [
-        CommonModule,
-        AuthRoutingModule,
-        ReactiveFormsModule,
-        FormsModule
-    ]
+  declarations: [AuthComponent, AuthNavComponent, ForgotPasswordComponent],
+  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule, FormsModule],
 })
-export class AuthModule { }
+export class AuthModule {}

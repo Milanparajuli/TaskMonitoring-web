@@ -14,7 +14,7 @@ export class TaskDetailComponent implements OnInit {
   // email: any;
   // fullName: any;
   task: any;
-  userId:any;
+  userId: any;
 
   constructor(
     private taskService: TaskServiceService,
@@ -26,9 +26,9 @@ export class TaskDetailComponent implements OnInit {
   }
   // add(){}
   public listUser() {
-    this.userId=localStorage.getItem('userId');
-    console.log("UserId: ",this.userId)
-    this.taskService.listTaskByUserId(this.task,this.userId).subscribe(
+    this.userId = localStorage.getItem('userId');
+    console.log('UserId: ', this.userId);
+    this.taskService.listTaskByUserId(this.task, this.userId).subscribe(
       (response: any) => {
         this.taskDetail = response?.task;
         console.log(response);
@@ -38,17 +38,19 @@ export class TaskDetailComponent implements OnInit {
   }
 
   editBtn(id: number) {
-    this.router.navigate(['home/edit-task/',id]);
+    this.router.navigate(['home/edit-task/', id]);
   }
 
-  deleteBtn(id:any){
-    if(confirm("Are you Sure want to delete ?")){
-      this.taskService.deleteTaskById(id).subscribe((response:any)=>{
-        this.listUser();
-      },
-      (error:any)=>{
-        console.error(error);
-      })
+  deleteBtn(id: any) {
+    if (confirm('Are you Sure want to delete ?')) {
+      this.taskService.deleteTaskById(id).subscribe(
+        (response: any) => {
+          this.listUser();
+        },
+        (error: any) => {
+          console.error(error);
+        }
+      );
     }
     // this.taskService.deleteTaskById(id).subscribe((response:any)=>{
     //   // console.log("hello");
@@ -57,7 +59,7 @@ export class TaskDetailComponent implements OnInit {
     //   console.error(error);
     // })
   }
-  addTask(){
-    this.router.navigate(['/home/addtask'])
+  addTask() {
+    this.router.navigate(['/home/addtask']);
   }
 }

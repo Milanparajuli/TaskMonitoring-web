@@ -6,14 +6,15 @@ import { LoginResponseModel } from '../TaskDetail/models/LoginResponse.model';
 import { logoutResponseModel } from '../TaskDetail/models/logoutResponse.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
+  isAuthenticate: boolean = false;
   apiUrlEndPoint: string = 'users/login';
   logoutEndpoint: string = 'users/logout';
-  baseUrl:string = environment.baseUrl;
+  baseUrl: string = environment.baseUrl;
   constructor(private httpClient: HttpClient) {}
+
   login(login: any): Observable<LoginResponseModel> {
     console.log(login);
     return this.httpClient.post<any>(
@@ -23,12 +24,10 @@ export class AuthService {
   }
 
   logout(logoutRequest: logoutResponseModel): Observable<any> {
-    console.log("auth service called");
+    console.log('auth service called');
     return this.httpClient.post<logoutResponseModel>(
       this.baseUrl.concat(this.logoutEndpoint),
       logoutRequest
     );
   }
-
-
 }

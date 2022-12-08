@@ -24,9 +24,9 @@ const routes: Routes = [
         component: AddTaskComponent,
       },
       {
-        path:'edit-task/:id',
-        component:EditTaskComponent
-      }
+        path: 'edit-task/:id',
+        component: EditTaskComponent,
+      },
     ],
   },
 ];

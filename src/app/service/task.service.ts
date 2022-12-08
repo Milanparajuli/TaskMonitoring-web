@@ -22,7 +22,7 @@ export class TaskServiceService {
 
   editTask(task: any, id: any): Observable<any> {
     return this.httpClient.put<any>(
-      this.baseUrl.concat(this.apiEndPoint+ '/by-id'.concat('/' + id)),
+      this.baseUrl.concat(this.apiEndPoint + '/by-id'.concat('/' + id)),
       task
     );
   }
@@ -33,7 +33,7 @@ export class TaskServiceService {
     );
   }
 
-  listTaskByUserId(task:any,userId: any): Observable<any> {
+  listTaskByUserId(task: any, userId: any): Observable<any> {
     return this.httpClient.get<any>(
       this.baseUrl.concat(this.apiEndPoint + '/by-user-id'.concat('/' + userId))
     );

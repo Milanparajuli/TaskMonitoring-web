@@ -2,7 +2,7 @@
   <div class="col-4 ml-5 content">
     <h1 class="font-weight-bold">Add Task Detail</h1>
   </div>
-  
+
   <hr />
 </div>
 <div class="formData container mt-2">
@@ -21,23 +21,23 @@
             />
           </div>
           <span
-                *ngIf="
-                  submitted ||
-                  forms['task'].dirty ||
-                  (forms['task'].touched && forms['task'].invalid)
-                "
-                class="info-msg text-danger"
-              >
-                <small
-                  *ngIf="forms['task'].errors &&
+            *ngIf="
+              submitted ||
+              forms['task'].dirty ||
+              (forms['task'].touched && forms['task'].invalid)
+            "
+            class="info-msg text-danger"
+          >
+            <small
+              *ngIf="forms['task'].errors &&
                                     forms['task'].errors?.['required']"
-                >
-                  Task is required 
-                </small>
-                <small>
-                  {{errorMessage}}
-                </small>
-              </span>
+            >
+              Task is required
+            </small>
+            <small>
+              {{ errorMessage }}
+            </small>
+          </span>
         </div>
       </div>
       <!-- before -->
@@ -78,7 +78,6 @@
             <input
               type="submit"
               class="form-control btn btn-primary"
-              
               (click)="sendTask(addTaskForm.value)"
             />
           </div>
