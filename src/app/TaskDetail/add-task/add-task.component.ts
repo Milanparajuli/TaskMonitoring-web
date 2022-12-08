@@ -12,6 +12,7 @@ export class AddTaskComponent implements OnInit {
   addTaskForm: FormGroup = new FormGroup({});
   submitted: boolean|undefined;
   isSubmitting: boolean|undefined;
+  errorMessage:any;
 
   constructor(
     private form:FormBuilder,
@@ -22,7 +23,8 @@ export class AddTaskComponent implements OnInit {
   ngOnInit(): void {
     this.addTaskForm= this.form.group({
       task:[undefined,Validators.required],
-      userId:[undefined,Validators.required]
+      // userId:[undefined,Validators.required]
+      userId:localStorage.getItem('userId')
     })
   }
   get forms():{[key:string]: AbstractControl}{
@@ -41,12 +43,16 @@ export class AddTaskComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       (error:any)=>{
+        this.errorMessage= "Cannot add task";
+        console.log(this.errorMessage)
         this.isSubmitting=false;
+        
       }
       );
     }
     else{
       console.log("Error on adding task");
+      this.errorMessage= "Cannot add task";
     }
   }
 }

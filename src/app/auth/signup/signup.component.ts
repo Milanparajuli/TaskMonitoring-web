@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
       this.userService.addUser(signup).subscribe(
         (response: any) => {
           this.isSubmitting = false;
-          this.router.navigate(['//login'])
+          this.router.navigate(['/auth/login'])
           console.log('user addded successfully');
         },
         (error: any) => {
@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
     }
   }
   signIn(){
-    this.router.navigate(['login'])
+    this.router.navigate(['auth/login'])
   }
 
   toggleFieldTextType() {

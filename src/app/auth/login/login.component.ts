@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['forgot-password'])
   }
   signUp(){
-    this.router.navigate(['register'])
+    this.router.navigate(['auth/register'])
   }
 
   toggleFieldTextType() {

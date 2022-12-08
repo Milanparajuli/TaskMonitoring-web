@@ -37,7 +37,7 @@ export class NavComponent implements OnInit {
     this.authService.logout(this.logoutRequest).subscribe(
       (response: any) => {
         console.log('logout success');
-        this.router.navigate(['login']);
+        this.router.navigate(['auth/login']);
         localStorage.removeItem('username');
         localStorage.removeItem('userId');
       },

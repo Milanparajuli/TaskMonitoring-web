@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class TaskServiceService {
   apiEndPoint: string = 'task';
-  apiByIdEndPoint:string = 'task/by-id'
+  // apiByIdEndPoint: string = 'task/by-id';
   baseUrl: string = environment.baseUrl;
 
   constructor(private httpClient: HttpClient) {}
@@ -20,24 +20,32 @@ export class TaskServiceService {
     );
   }
 
-  editTask(task: any,id:any): Observable<any> {
+  editTask(task: any, id: any): Observable<any> {
     return this.httpClient.put<any>(
-      this.baseUrl.concat(this.apiByIdEndPoint.concat('/' + id)),
+      this.baseUrl.concat(this.apiEndPoint+ '/by-id'.concat('/' + id)),
       task
     );
   }
 
   listTaskById(id: any): Observable<any> {
     return this.httpClient.get<any>(
-      this.baseUrl.concat(this.apiByIdEndPoint).concat('/' + id)
+      this.baseUrl.concat(this.apiEndPoint + '/by-id').concat('/' + id)
     );
   }
 
-  listAllTask(task: any): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl.concat(this.apiEndPoint));
+  listTaskByUserId(task:any,userId: any): Observable<any> {
+    return this.httpClient.get<any>(
+      this.baseUrl.concat(this.apiEndPoint + '/by-user-id'.concat('/' + userId))
+    );
   }
 
-  deleteTaskById(id:any):Observable<any>{
-    return this.httpClient.delete<any>(this.baseUrl.concat(this.apiByIdEndPoint).concat('/'+id));
+  // listAllTask(task: any): Observable<any> {
+  //   return this.httpClient.get<any>(this.baseUrl.concat(this.apiEndPoint));
+  // }
+
+  deleteTaskById(id: any): Observable<any> {
+    return this.httpClient.delete<any>(
+      this.baseUrl.concat(this.apiEndPoint + '/by-id').concat('/' + id)
+    );
   }
 }

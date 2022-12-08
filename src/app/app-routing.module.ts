@@ -8,9 +8,12 @@ const routes: Routes = [
   //   path: '',
   //   component: WelcomePageComponent,
   // },
+  {
+    path: '', redirectTo: 'auth', pathMatch: 'full'
+  },
 
   {
-    path: '',
+    path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then((m) => m.AuthModule),
   },

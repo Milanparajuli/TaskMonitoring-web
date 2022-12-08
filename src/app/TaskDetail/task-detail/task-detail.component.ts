@@ -14,6 +14,7 @@ export class TaskDetailComponent implements OnInit {
   // email: any;
   // fullName: any;
   task: any;
+  userId:any;
 
   constructor(
     private taskService: TaskServiceService,
@@ -25,7 +26,9 @@ export class TaskDetailComponent implements OnInit {
   }
   // add(){}
   public listUser() {
-    this.taskService.listAllTask(this.task).subscribe(
+    this.userId=localStorage.getItem('userId');
+    console.log("UserId: ",this.userId)
+    this.taskService.listTaskByUserId(this.task,this.userId).subscribe(
       (response: any) => {
         this.taskDetail = response?.task;
         console.log(response);
