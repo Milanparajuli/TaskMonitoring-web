@@ -15,6 +15,10 @@ export class AuthService {
   baseUrl: string = environment.baseUrl;
   constructor(private httpClient: HttpClient) {}
 
+  isLoggedIn(){
+    return !! localStorage.getItem('userId');
+  }
+
   login(login: any): Observable<LoginResponseModel> {
     console.log(login);
     return this.httpClient.post<any>(

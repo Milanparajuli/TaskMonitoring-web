@@ -17,13 +17,12 @@ const routes: Routes = [
 
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
   },
   {
     path: 'home',
     loadChildren: () =>
-      import('./TaskDetail/task/task.module').then((m) => m.TaskModule),
-    canActivate: [AuthGuard],
+      import('./TaskDetail/task/task.module').then((m) => m.TaskModule),canActivate:[AuthGuard]
   },
   {
     path: '**',
