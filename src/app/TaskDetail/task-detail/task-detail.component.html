@@ -39,11 +39,11 @@
         <td>{{ task.taskStatus }}</td>
         <td>
           <span
-            ><a class="btn btn-outline-secondary m-2" (click)="editBtn(task.id)"
-              >Edit</a
+            ><a class="btn-sm" (click)="editBtn(task.id)"
+              > <i class="fas fa-edit"></i></a
             >
-            <a class="btn btn-outline-secondary" (click)="deleteBtn(task.id)"
-              >Delete</a
+            <a class="btn-sm" (click)="deleteBtn(task.id)"
+              > <i class="fa fa-trash" aria-hidden="true"></i></a
             >
           </span>
         </td>
