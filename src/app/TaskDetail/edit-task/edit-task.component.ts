@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 // import { clippingParents } from '@popperjs/core';
 import { TaskServiceService } from 'src/app/service/task.service';
 
@@ -27,7 +28,8 @@ export class EditTaskComponent implements OnInit {
     private form: FormBuilder,
     private taskService: TaskServiceService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,7 @@ export class EditTaskComponent implements OnInit {
           // console.log('task jnbvjk: ',this.taskDetail)
           this.isSubmitting = true;
           console.log('Task Edited sucessfully');
+          this.toastrService.success('Task Edited Successfully!!!', 'Success');
           this.router.navigate(['home']);
         },
         (error: any) => {

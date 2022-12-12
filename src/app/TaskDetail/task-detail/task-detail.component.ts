@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { TaskServiceService } from 'src/app/service/task.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class TaskDetailComponent implements OnInit {
 
   constructor(
     private taskService: TaskServiceService,
+    private toastrService: ToastrService,
     private router: Router
   ) {}
 
@@ -46,6 +48,7 @@ export class TaskDetailComponent implements OnInit {
       this.taskService.deleteTaskById(id).subscribe(
         (response: any) => {
           this.listUser();
+          this.toastrService.success('Deleted Successfully!!!', 'Success');
         },
         (error: any) => {
           console.error(error);

@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { TaskServiceService } from 'src/app/service/task.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class AddTaskComponent implements OnInit {
   constructor(
     private form: FormBuilder,
     private taskService: TaskServiceService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class AddTaskComponent implements OnInit {
         (response: any) => {
           this.isSubmitting = false;
           console.log('Task Added sucessfully');
+          this.toastrService.success('Added Successfully!!!', 'Success');
           this.router.navigate(['/home']);
         },
         (error: any) => {

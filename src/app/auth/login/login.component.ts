@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 import { UserService } from 'src/app/service/user.service';
 
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private form: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +68,7 @@ export class LoginComponent implements OnInit {
       this.userService.login(login).subscribe(
         (response: any) => {
           this.isSubmitting = false;
+          this.toastrService.success('Logged in Succesfully!!!', 'Success');
           console.log('Login Sucessfully');
           this.router.navigate(['/home']);
           localStorage.setItem('userId', response.userId);
@@ -73,6 +76,7 @@ export class LoginComponent implements OnInit {
         (error: any) => {
           this.isSubmitting = false;
           this.inValidMsg = 'Either Password or username is not valid';
+          this.toastrService.error('Either Password or username is not valid!!!', 'Invalid');
           // window.location.reload();
         }
       );
@@ -86,7 +90,7 @@ export class LoginComponent implements OnInit {
   }
 
   forgotPassword() {
-    this.router.navigate(['forgot-password']);
+    this.router.navigate(['auth/forgot-password']);
   }
   signUp() {
     this.router.navigate(['auth/register']);
